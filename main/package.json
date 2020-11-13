@@ -1,0 +1,44 @@
+{
+  "name": "incoming-ts",
+  "version": "1.0.0",
+  "description": "TypeScript package to support you in validating property of incoming objects.",
+  "main": "lib/index",
+  "typings": "lib/index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/malkeeszon/incoming/tree/testing"
+  },
+  "scripts": {
+    "prepub": "npm run compile",
+    "compile": "npm run clean && tsc -p .",
+    "watch": "tsc -w -p .",
+    "clean": "rm -rf lib"
+  },
+  "keywords": [
+    "typescript",
+    "input",
+    "validation"
+  ],
+  "author": "Rafal Witczak <rwitczak89@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "commitizen": "^4.2.2",
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-promise": "^4.2.1",
+    "prettier": "^2.1.2"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
