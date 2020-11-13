@@ -4,7 +4,7 @@ export default function NotEmpty() {
     const setter = (next: string) => {
       if (!next.length) {
         // eslint-disable-next-line no-console
-        console.log(`Validation Error on property: "${key}" - should have length > 0`);
+        console.log(`V\x1b[91mIncoming object validation Error:\x1b[39m property: "${key}" - should have length > 0`);
       } else {
         value = next;
       }
