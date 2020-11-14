@@ -5,8 +5,7 @@ export default function NotEmpty() {
   return function (target: any, key: string): void {
     propertyMapper(target, key, (next: string) => {
       if (!next.length) {
-        // eslint-disable-next-line no-console
-        console.log(`V\x1b[91mIncoming object validation Error:\x1b[39m property: "${key}" - should have length > 0`);
+        throw new Error(`\x1b[91mValidation Error:\x1b[39m on ${target}[${key}] - should have length > 0`);
       } else {
         return next;
       }

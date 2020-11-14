@@ -7,7 +7,7 @@ export default function Contains(word: string) {
     propertyMapper(target, key, (next: string) => {
       if (!next.includes(word)) {
         // eslint-disable-next-line no-console
-        console.log(`V\x1b[91mIncoming object validation Error:\x1b[39m property: "${key}" - should contain "${word}"`);
+        throw new Error(`\x1b[91mValidation Error:\x1b[39m on ${target}[${key}] - should contain "${word}"`);
       } else return next;
     });
   };
