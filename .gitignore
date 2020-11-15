@@ -1,3 +1,4 @@
 node_modules
 main/lib
+main/package-lock.json
 .eslintignore
