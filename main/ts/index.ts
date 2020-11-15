@@ -1,6 +1,3 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-/* eslint-disable no-unused-vars */
 import Contains from './decorators/Contains';
 import IsBoolean from './decorators/IsBoolean';
 import IsEmail from './decorators/IsEmail';
