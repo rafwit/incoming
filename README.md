@@ -2,9 +2,19 @@
 
 Incoming is a TypeScript package that aims to support data validation both on the server and the client side. It is based on decorators and uses them to validate incoming objects of your choice.
 
+## Table of contents
+
+- [**Instalation**](#installation)
+- [**Usage**](#usage)
+  - [Server](#server)
+  - [Client](#client)
+- [**Available decorators**](#available-decorators)
+
 ## Installation
 
-`npm install incoming-ts`
+```
+$npm install incoming-ts
+```
 
 ## Usage
 
@@ -12,7 +22,9 @@ Incoming is a TypeScript package that aims to support data validation both on th
 
 ##### Command Line:
 
-`tsc --target ES5 --experimentalDecorators`
+```
+$tsc --target ES5 --experimentalDecorators
+```
 
 ##### tsconfig.json:
 
@@ -29,11 +41,11 @@ Incoming is a TypeScript package that aims to support data validation both on th
 
 #### Server
 
-Example usage for object validation received via `post` request before saving it as new document in Mongoose model in MongoDB databse:
+Example usage for object validation received via `post` request before saving it as new document in Mongoose model in MongoDB databse handled in Express:
 
 **Step 1**
 
-First create a class with properties that match properties of the object that you want to validate. To add validation conditions, simply annotate selected properties with chosen decorators. You can chain validation coditions by adding multiple decorators. The validation will be performed from bottom decorator to the top for each property. You can find a full list of currently available decorators in section **Available decorators**.
+First create a class with properties that match properties of the object that you want to validate. To add validation conditions, simply annotate selected properties with chosen decorators. You can chain validation coditions by adding multiple decorators. The validation will be performed from bottom decorator to the top for each property. You can find a full list of currently available decorators in the section [Available decorators](#available-decorators).
 
 ```typescript
 import {MaxLength, IsAlphaNumeric, IsLength, IsEmail} from 'incoming-ts';
@@ -58,9 +70,9 @@ class Incoming {
 }
 ```
 
-**Step 2 **
+**Step 2**
 
-Inside the function that serves the request, destructure the properties from `req.body` to validate them. Then create a new instance of your `Incoming` class. The validation will takes place in the moment that instantiation happens. If it fails the error will be thrown and the property that did not pass validation will not be created. The example assumes that the Mongoose Model Schema requires all properties before creating the document, hence it will not be created.
+Inside the function that serves the request, destructure the chosen properties from `req.body`. Then create a new instance of your `Incoming` class. **The validation will take place in the moment that instantiation happens**. If it fails the error will be thrown and the property that did not pass validation will not be created. The example assumes that the Mongoose Model Schema requires all properties before creating the document, hence it will not be created.
 
 If the validation passes the new document will be created.
 
@@ -79,11 +91,11 @@ async function servePostRequest(req: Request, res: Response): Promise<any> {
 
 #### Client
 
-Example usage in an Angular application to serve submitting a form and sending a `post` request.
+Example usage in an Angular application to serve submitting a form and sending a `post` request:
 
 **Step 1**
 
-First create a class with properties that match properties of the object that you want to validate. To add validation conditions, simply annotate selected properties with chosen decorators. You can chain validation coditions by adding multiple decorators. The validation will be performed from bottom decorator to the top for each property. You can find a full list of currently available decorators in section **Available decorators**.
+First create a class with properties that match properties of the object that you want to validate. To add validation conditions, simply annotate selected properties with chosen decorators. You can chain validation coditions by adding multiple decorators. The validation will be performed from bottom decorator to the top for each property. You can find a full list of currently available decorators in the section [Available decorators](#available-decorators).
 
 ```typescript
 import {MinLength, IsAlphaNumeric} from 'incoming-ts';
@@ -101,7 +113,7 @@ class Incoming {
 
 **Step 2**
 
-Then handle the form submission by creating an instance of `Incoming` class with expected properties. The validation will take place in the moment that instantiation happens. If it fails the error will be thrown and property that did not pass validation will not be created.
+Then inside the function that handles the form submission create an instance of `Incoming` class with expected properties. **The validation will take place in the moment that instantiation happens**. If it fails the error will be thrown and the property that did not pass validation will not be created.
 
 ```typescript
 onSubmit (): void {
@@ -110,15 +122,15 @@ onSubmit (): void {
   const incoming = new Incoming(newAllergy.allergy);
 
 	this.allergyService.postAllergy(incoming)
-        .subscribe((allergy) => {
-          this.allergyService.addToAllergies([allergy])
-        });
+    .subscribe((allergy) => {
+      this.allergyService.addToAllergies([allergy])
+    });
 }
 ```
 
 ### Available decorators
 
-Here you can find all currently available decorators and their purpose. Each validator will throw an error in case the validation fails (condition is not fulfield). In addition, some decorators performs extra type checks.
+Here you can find all currently available decorators and their behaviour. Each validator will throw an error in case the validation fails (the condition has not been met). In addition, some decorators perform extra type checks.
 
 | Decorator                             | Behaviour                                                                                                                                                                                              |
 | :------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -137,6 +149,6 @@ Here you can find all currently available decorators and their purpose. Each val
 | `@MaxLength(max: number)`             | **Condition**: the property `value` has length no grater than `max`. If it will encounter `value` of type different than `string` or `object` that is not an `array` it will throw an error.           |
 | `@MaxNum(max: number)`                | **Condition**: the property `value` is not grater than `max`. If it will encounter `value` of type different than `number` it will throw an error.                                                     |
 | `@MinLength(min: number)`             | **Condition**: the property `value` has length not less than `min`. If it will encounter `value` of type different than `string` or `object` that is not an `array` it will throw an error.            |
-| `@MinNum(min: number)`                | **Condition**: the property `value` is not less than `max`. If it will encounter `value` of type different than `number` it will throw an error.                                                       |
-| `@NotEmpty()`                         | **Condition**: the property `value` is not `null`, an empty `string`, `array` or `key-value par object`.                                                                                               |
+| `@MinNum(min: number)`                | **Condition**: the property `value` is not less than `min`. If it will encounter `value` of type different than `number` it will throw an error.                                                       |
+| `@NotEmpty()`                         | **Condition**: the property `value` is not `null`, an empty `string`, `array` or `key-value` pair `object`.                                                                                            |
 | `@OnlyLetters()`                      | **Condition**: the property `value` contains only letters. If it will encounter `value` of type different than `string` it will throw an error.                                                        |
