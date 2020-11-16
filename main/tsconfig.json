@@ -5,7 +5,7 @@
     "target":"ES2015",
     "lib": ["es6", "ES2015","DOM"],
     "declaration": true,
-    "rootDirs": ["ts", "workinprogress"],
+    "rootDirs": ["src", "workinprogress"],
     "outDir": "lib",
     "noImplicitAny": true,
     "removeComments": true,
