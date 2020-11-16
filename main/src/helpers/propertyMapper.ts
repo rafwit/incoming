@@ -1,9 +1,10 @@
 // this function is crucial for making sure that properties annotated with all decorators
-// will be enumerable on target class instance
+// will be enumerable on target class instance and allows use of multiple decorators
 
-// eslint-disable-next-line no-unused-vars
-export default function propertyMapper<T>(prototype: any, key: string, mapper: (value: any) => T) {
+export default function propertyMapper<T>(prototype: Object, key: string, mapper: (value: any) => T) {
   const values = new Map<any, T>();
+  const keyDescriptor = Object.getOwnPropertyDescriptor(prototype, key);
+  const pervSet = keyDescriptor && keyDescriptor.set;
   Object.defineProperty(prototype, key, {
     set(firstValue: any) {
       Object.defineProperty(this, key, {
@@ -11,6 +12,7 @@ export default function propertyMapper<T>(prototype: any, key: string, mapper: (
           return values.get(this);
         },
         set(value: any) {
+          pervSet && pervSet.call({}, firstValue);
           values.set(this, mapper(value));
         },
         enumerable: true,
