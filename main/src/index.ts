@@ -11,11 +11,14 @@ import IsLowerCase from './decorators/IsLowerCase';
 import IsNumber from './decorators/IsNumber'
 import IsUpperCase from './decorators/IsUpperCase';
 import MaxLength from './decorators/MaxLength';
+import MaxNum from './decorators/MaxNum'
 import MinLength from './decorators/MinLength';
+import MinNum from './decorators/MinNum'
 import NotEmpty from './decorators/NotEmpty';
 import OnlyLetters from './decorators/OnlyLetters';
 
 export {
 Contains, Equals, IsAlphaNumeric, IsArray, IsBoolean, IsDateObj, IsDecimalNum,
-IsEmail, IsLength, IsLowerCase, IsNumber, IsUpperCase, MaxLength, MinLength, NotEmpty, OnlyLetters
+IsEmail, IsLength, IsLowerCase, IsNumber, IsUpperCase, MaxLength, MaxNum, MinLength,
+MinNum, NotEmpty, OnlyLetters
 };
