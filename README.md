@@ -6,8 +6,8 @@ Incoming is a TypeScript package that aims to support data validation both on th
 
 - [**Instalation**](#installation)
 - [**Usage**](#usage)
-  - [Server](#server)
-  - [Client](#client)
+  - [**Server**](#server)
+  - [**Client**](#client)
 - [**Available decorators**](#available-decorators)
 
 ## Installation
@@ -130,7 +130,7 @@ onSubmit (): void {
 
 ### Available decorators
 
-Here you can find all currently available decorators and their behaviour. Each validator will throw an error in case the validation fails (the condition has not been met). In addition, some decorators perform extra type checks.
+Here you can find all currently available decorators and their behaviour. Each validator will throw an error in case the validation fails (i.e. the condition has not been met). In addition, some decorators perform extra type checks.
 
 | Decorator                             | Behaviour                                                                                                                                                                                              |
 | :------------------------------------ | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
