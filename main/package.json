@@ -1,12 +1,12 @@
 {
   "name": "incoming-ts",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "TypeScript package to support you in validating property of incoming objects.",
   "main": "lib/index",
   "typings": "lib/index",
   "repository": {
     "type": "git",
-    "url": "https://github.com/malkeeszon/incoming/tree/testing"
+    "url": "https://github.com/malkeeszon/incoming/"
   },
   "scripts": {
     "prepub": "npm run compile",
@@ -17,7 +17,8 @@
   "keywords": [
     "typescript",
     "input",
-    "validation"
+    "validation",
+    "decorators"
   ],
   "author": "Rafal Witczak <rwitczak89@gmail.com>",
   "license": "MIT",
@@ -37,7 +38,8 @@
     "typescript": "^4.0.5"
   },
   "files": [
-    "lib"
+    "lib",
+    "README.md"
   ],
   "publishConfig": {
     "access": "public"
