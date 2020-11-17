@@ -1,6 +1,7 @@
 node_modules
 main/lib
 main/package-lock.json
+main/README.md
 .eslintignore
 
 
