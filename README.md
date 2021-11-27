@@ -4,16 +4,21 @@ Incoming is a TypeScript package that aims to support data validation both on th
 
 ## Table of contents
 
-- [**Instalation**](#installation)
-- [**Usage**](#usage)
-  - [**Server**](#server)
-  - [**Client**](#client)
-- [**Available decorators**](#available-decorators)
+- [`incoming-ts`](#incoming-ts)
+  - [Table of contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+        - [Command Line:](#command-line)
+        - [tsconfig.json:](#tsconfigjson)
+    - [Examples](#examples)
+      - [Server](#server)
+      - [Client](#client)
+    - [Available decorators](#available-decorators)
 
 ## Installation
 
-```
-$npm install incoming-ts
+```bash
+$ npm install incoming-ts
 ```
 
 ## Usage
@@ -22,8 +27,8 @@ $npm install incoming-ts
 
 ##### Command Line:
 
-```
-$tsc --target ES5 --experimentalDecorators
+```bash
+$ tsc --target ES5 --experimentalDecorators
 ```
 
 ##### tsconfig.json:
